@@ -1,3 +1,5 @@
+require 'colorizr'
+
 class Jury
 	attr_accessor :members#, :votes
 
@@ -18,9 +20,9 @@ class Jury
 		end
 
 		@members.each do |member|
-			key = finalists[0].to_s
-		  votes[finalists[0].to_s] += 1
-		  puts "#{member.name}" + "\n"
+			key = finalists.shuffle![0].to_s
+		  votes[key] += 1
+		  puts "#{member.name.green} was voted off" + "\n"
 		end
 		return votes
 	end
@@ -32,6 +34,8 @@ class Jury
 	end
 
 	def announce_winner(final_votes)
-		final_votes.select {|k,v| v == final_votes.values.max }.keys.first
+		winner =	final_votes.select {|k,v| v == final_votes.values.max }.keys.first
+		puts "#{winner.to_s.green } has won the competition"
+		return winner
 	end
 end
