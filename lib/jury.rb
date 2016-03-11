@@ -1,11 +1,10 @@
 require 'colorizr'
 
 class Jury
-	attr_accessor :members#, :votes
+	attr_accessor :members
 
 	def initialize
 		@members = []
-		#@votes = {}
 	end
 
 	def add_member(member)
