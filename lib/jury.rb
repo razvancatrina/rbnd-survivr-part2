@@ -18,12 +18,13 @@ class Jury
 		finalists.each do |finalist|
 			votes[finalist.to_s] = 0
 		end
-
+    
 		@members.each do |member|
 			key = finalists.shuffle![0].to_s
 		  votes[key] += 1
-		  puts "#{member.name.green} was voted off" + "\n"
+		  puts "#{member.name.green} voted #{key}" + "\n"
 		end
+		puts
 		return votes
 	end
 
@@ -35,7 +36,7 @@ class Jury
 
 	def announce_winner(final_votes)
 		winner =	final_votes.select {|k,v| v == final_votes.values.max }.keys.first
-		puts "#{winner.to_s.green } has won the competition"
+		puts "###### #{winner.to_s.green } has won the competition ###### "
 		return winner
 	end
 end

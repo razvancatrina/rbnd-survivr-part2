@@ -7,7 +7,7 @@ class Tribe
 		@name = values[:name]
 		@members = values[:members]
 
-		puts "Tribe " + name.red + " was created"
+		puts "\nTribe " + name.red + " was created\n"
 	end
 
 	def to_s
@@ -15,6 +15,9 @@ class Tribe
 	end
 
 	def tribal_council(params = {})
-		@members.select { |member| member.name != params[:immune].name }.shuffle.sample		
+		puts 
+		eliminated_contestant = @members.select { |member| member.name != params[:immune].name }.shuffle.sample		
+		puts " #{eliminated_contestant.to_s.red} was eliminated" 
+		return eliminated_contestant
 	end
 end
